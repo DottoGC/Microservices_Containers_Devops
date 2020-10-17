@@ -1,0 +1,18 @@
+{
+  "name": "NodeJs",
+  "version": "1.0.0",
+  "description": "Microservicio para ESB",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/index.js"
+  },
+  "keywords": [],
+  "author": "Ottoniel Guarchaj",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-uglify-es": "^2.0.0"
+  }
+}

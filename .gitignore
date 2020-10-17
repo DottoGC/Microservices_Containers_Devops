@@ -1,0 +1,16 @@
+otros/
+
+Cliente_Go/node_modules/
+Cliente_Go/dist/
+
+ESB_NodeJs/node_modules/
+ESB_NodeJs/dist/
+
+Restaurante_PyFlask/node_modules/
+Restaurante_PyFlask/dist/
+
+Repartidor_PyFlask/node_modules/
+Repartidor_PyFlask/dist/
+
+# CONFIG
+.env
