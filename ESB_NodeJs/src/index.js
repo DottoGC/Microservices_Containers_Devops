@@ -1,3 +1,4 @@
+'use strict';
 
 const express = require("express");
 const bodyParser = require('body-parser');
@@ -59,7 +60,7 @@ app.route('/pedidos')
 
             
             console.log("Solicitando estado del pedido al Restaurante.'");  
-            request('http://localhost:4000/pedidos', { json: true }, (err, res) => {
+            request('http://restaurante-services:4000/pedidos', { json: true }, (err, res) => {
                 if (err) { return console.log(err); }
                 if (!err && res.statusCode == 200) {
                     console.log(res.body);
@@ -116,7 +117,7 @@ app.route('/pedidos')
             
             
             console.log("Enviando solicitud al Restaurante...'");
-            request.post('http://localhost:4000/pedidos', {
+            request.post('http://restaurante-services:4000/pedidos', {
               json: {
                 pedido: pedidoCliente.pedido,
                 cliente: pedidoCliente.cliente,
@@ -155,7 +156,7 @@ app.route('/repartidores')
         } else {
             
             console.log("Solicitando estado al Repartaritor desde el ESB.'");  
-            request('http://localhost:5000/repartidores', { json: true }, (err, res) => {
+            request('http://repartidor-services:5000/repartidores', { json: true }, (err, res) => {
                 if (err) { return console.log(err); }
                 if (!err && res.statusCode == 200) {
                     console.log(res.body);
@@ -203,7 +204,7 @@ app.route('/repartidores')
             
             
             console.log("Enviando solicitud de entrega a Repartidor..'");
-            request.post('http://localhost:5000/repartidores', {
+            request.post('http://repartidor-services:5000/repartidores', {
               json: {
                 pedido: repartidorRestaurante.pedido,
                 cliente: repartidorRestaurante.cliente,

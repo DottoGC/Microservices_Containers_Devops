@@ -18,5 +18,4 @@ WORKDIR /app
 
 COPY . .
 
-ENTRYPOINT ["/venv/bin/python3", "/app/src/tests.py"]
-ENTRYPOINT ["/venv/bin/python3", "/app/src/api.py"]
+ENTRYPOINT ["/venv/bin/python3", "/app/src/repartidor.py"]

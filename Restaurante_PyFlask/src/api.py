@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
-from sqlalchemy import create_engine
 import requests
 import json
 
@@ -35,11 +34,10 @@ class Pedido(Resource):
         Pedido.direccion = request.json['direccion']
         Pedido.telefono = request.json['telefono']
         Pedido.estado = request.json['estado']
-        
 
         print('Enviando solicitud de entrega para Repartidor al ESB')
         #endpoint = "http://localhost:5001/repartidor"
-        endpoint = "http://localhost:3000/repartidores"
+        endpoint = "http://esb-services:3000/repartidores"
         data = {
             "pedido" : Pedido.pedidoCliente,
             "cliente" :Pedido.cliente,
@@ -57,4 +55,4 @@ api.add_resource(Pedido, '/pedidos')  # Route_1
 
 
 if __name__ == '__main__':
-     app.run(port='4000')
+         app.run(host='0.0.0.0', port=4000, debug=True)

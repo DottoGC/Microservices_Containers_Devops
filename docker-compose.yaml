@@ -1,14 +1,55 @@
 version: '3.3'
 
 services:
-   esb-services:
+  
+esb-services:
      container_name: esb-services
      build: 
        context: ./ESB_NodeJs
+     restart: always
      ports:       
-       - 3000:3000 
+       - 3000:3000
+     volumes:
+       - type: bind
+         source: ./ESB_NodeJs/src
+         target: /usr/src/app/src
+       - type: bind
+         source: ./ESB_NodeJs/tests
+         target: /usr/src/app/tests
+       - type: bind
+         source: ./ESB_NodeJs/dist
+         target: /usr/src/app/dist       
+     command: bash -c "gulp uglify && npm run start"
+   
+
+   restaurante-services:
+     container_name: restaurante-services
+     build: 
+       context: ./Restaurante_PyFlask
      restart: always
      volumes:
        - type: bind
-         source: ./ESB_NodeJs
-         target: /usr/src/app
+         source: ./Restaurante_PyFlask/src
+         target: /app/src
+       - type: bind
+         source: ./Restaurante_PyFlask/tests
+         target: /app/tests
+       - type: bind
+         source: ./Restaurante_PyFlask/dist
+         target: /app/dist
+
+   repartidor-services:
+     container_name: repartidor-services
+     build: 
+       context: ./Repartidor_PyFlask
+     restart: always
+     volumes:
+       - type: bind
+         source: ./Repartidor_PyFlask/src
+         target: /app/src
+       - type: bind
+         source: ./Repartidor_PyFlask/tests
+         target: /app/tests
+       - type: bind
+         source: ./Repartidor_PyFlask/dist
+         target: /app/dist

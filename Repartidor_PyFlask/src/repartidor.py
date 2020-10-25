@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
-from sqlalchemy import create_engine
 
 app = Flask(__name__)
 api = Api(app)
@@ -37,4 +36,4 @@ api.add_resource(Repartidor, '/repartidores')  # Route_1
 
 
 if __name__ == '__main__':
-     app.run(port='5000')
+     app.run(host='0.0.0.0', port=5000, debug=True)
